@@ -18,20 +18,7 @@ pip install pandas scikit-learn joblib matplotlib seaborn fastapi uvicorn
 ```
 
 
-
-### 3. Generar el modelo entrenado
-
-Abrir `notebooks/2_model_pipeline_cv_2.ipynb` con el entorno de su preferencia activo y correr todas las celdas. Al finalizar, verificar que el archivo existe y tiene peso:
-
-```powershell
-(Get-Item "app/model.joblib").length
-```
-
-Debe retornar un valor mayor a 0.
-
-
-
-### 4. Instalar Minikube
+### 3. Instalar Minikube
 
 En **PowerShell como Administrador:**
 
@@ -54,7 +41,7 @@ minikube version
 
 
 
-### 5. Instalar kubectl
+### 4. Instalar kubectl
 
 ```powershell
 winget install -e --id Kubernetes.kubectl
@@ -68,7 +55,7 @@ kubectl version --client
 
 
 
-### 6. Iniciar el cluster de Minikube
+### 5. Iniciar el cluster de Minikube
 
 ```powershell
 minikube start --driver=docker
@@ -85,7 +72,7 @@ El nodo debe aparecer en estado `Ready`.
 
 
 
-### 7. Construir la imagen Docker dentro de Minikube
+### 6. Construir la imagen Docker dentro de Minikube
 
 > Este paso es clave: apunta el Docker de tu terminal al Docker **interno** de Minikube para que el cluster pueda usar la imagen sin necesitar Docker Hub.
 
@@ -102,7 +89,7 @@ docker images | findstr heart-api
 
 
 
-### 8. Desplegar en Kubernetes
+### 7. Desplegar en Kubernetes
 
 ```powershell
 kubectl apply -f k8s/deployment.yaml
@@ -119,7 +106,7 @@ Debe mostrar `STATUS: Running` y `READY: 1/1`.
 
 
 
-### 9. Exponer el servicio
+### 8. Exponer el servicio
 
 En una **terminal aparte**, dejar corriendo:
 
@@ -137,7 +124,7 @@ Debe mostrar `EXTERNAL-IP: 127.0.0.1`.
 
 
 
-### 10. Probar la API
+### 9. Probar la API
 
 Abrir en el navegador:
 
