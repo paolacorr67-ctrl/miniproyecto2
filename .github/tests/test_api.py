@@ -1,11 +1,13 @@
 import sys
 import os
+
 sys.path.insert(0, os.path.abspath("."))
 
 from fastapi.testclient import TestClient
 from app.api import app
 
 client = TestClient(app)
+
 
 def test_predict_returns_200():
     response = client.post("/predict", json={
@@ -22,6 +24,7 @@ def test_predict_returns_200():
         "ST_Slope": "Up"
     })
     assert response.status_code == 200
+
 
 def test_predict_returns_probability():
     response = client.post("/predict", json={
