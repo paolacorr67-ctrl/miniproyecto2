@@ -1,15 +1,5 @@
-
-
+#etapa 4
 ##  Instalación y ejecución local
-
-### Prerrequisitos
-- Windows 10/11 (64-bit)
-- [Docker Desktop](https://www.docker.com/products/docker-desktop/) instalado y corriendo
-- [Anaconda](https://www.anaconda.com/) o Miniconda
-- Git
-
----
-
 ### 1. Clonar el repositorio
 
 ```bash
@@ -17,7 +7,7 @@ git clone <url-del-repo>
 cd heart-disease-mlops
 ```
 
----
+
 
 ### 2. Crear entorno Python y dependencias
 
@@ -27,11 +17,11 @@ conda activate ml_venv
 pip install pandas scikit-learn joblib matplotlib seaborn fastapi uvicorn
 ```
 
----
+
 
 ### 3. Generar el modelo entrenado
 
-Abrir `notebooks/2_model_pipeline_cv_2.ipynb` con el entorno `ml_venv` activo y correr todas las celdas. Al finalizar, verificar que el archivo existe y tiene peso:
+Abrir `notebooks/2_model_pipeline_cv_2.ipynb` con el entorno de su preferencia activo y correr todas las celdas. Al finalizar, verificar que el archivo existe y tiene peso:
 
 ```powershell
 (Get-Item "app/model.joblib").length
@@ -39,7 +29,7 @@ Abrir `notebooks/2_model_pipeline_cv_2.ipynb` con el entorno `ml_venv` activo y 
 
 Debe retornar un valor mayor a 0.
 
----
+
 
 ### 4. Instalar Minikube
 
@@ -62,7 +52,7 @@ Cerrar y reabrir PowerShell, luego verificar:
 minikube version
 ```
 
----
+
 
 ### 5. Instalar kubectl
 
@@ -76,7 +66,7 @@ Cerrar y reabrir PowerShell, luego verificar:
 kubectl version --client
 ```
 
----
+
 
 ### 6. Iniciar el cluster de Minikube
 
@@ -93,7 +83,7 @@ kubectl get nodes
 
 El nodo debe aparecer en estado `Ready`.
 
----
+
 
 ### 7. Construir la imagen Docker dentro de Minikube
 
@@ -110,7 +100,7 @@ Verificar que la imagen fue creada:
 docker images | findstr heart-api
 ```
 
----
+
 
 ### 8. Desplegar en Kubernetes
 
@@ -127,7 +117,7 @@ kubectl get pods
 
 Debe mostrar `STATUS: Running` y `READY: 1/1`.
 
----
+
 
 ### 9. Exponer el servicio
 
@@ -145,7 +135,7 @@ kubectl get svc heart-service
 
 Debe mostrar `EXTERNAL-IP: 127.0.0.1`.
 
----
+
 
 ### 10. Probar la API
 
