@@ -3,8 +3,10 @@ from pydantic import BaseModel
 import joblib
 import pandas as pd
 
+
 model = joblib.load("app/model.joblib")
 app = FastAPI()
+
 
 class Input(BaseModel):
     Age: int
@@ -18,6 +20,7 @@ class Input(BaseModel):
     ExerciseAngina: str
     Oldpeak: float
     ST_Slope: str
+
 
 @app.post("/predict")
 def predict(data: Input):
